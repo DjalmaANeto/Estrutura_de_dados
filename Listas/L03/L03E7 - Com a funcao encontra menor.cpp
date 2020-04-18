@@ -14,6 +14,7 @@ int main(void){
 	//lista inicia vazia
 	//ponteiro inicio contera sempre o primeiro elemento da lista
 	LISTA *inicio = NULL;
+	LISTA *inicio2 = NULL;
 	
 	//ponteiro fim contera o final da lista 
 	LISTA *fim = NULL;
@@ -36,16 +37,16 @@ int main(void){
 		cout<<"\n4 - Remover da lista";
 		cout<<"\n5 - Esvaziar a lista";
 		cout<<"\n6 - Encontra o menor valor";
-		cout<<"\n7 - Sair";
+		cout<<"\n8 - Sair";
 		cout<<"\nDigite a opcao: ";
 		cin>>op;
 			
-		if(op < 1 || op > 7){
+		if(op < 1 || op > 8){
 			cout<<"\nOpcao invalida";
 		}
 		
 		if(op == 1){//inserindo no inicio da lista			
-			cout<<"\nDigite o numero a ser inserido na lista: ";
+			cout<<"\nDigite o numero a ser inserido na lista 1: ";
 			LISTA *novo = new LISTA();
 			cin>>novo->num;
 			
@@ -60,7 +61,7 @@ int main(void){
 				novo->prox = inicio;
 				inicio = novo;
 			}
-			cout<<"\nNumero "<< novo->num <<" inserido no inicio da lista!" ;
+			cout<<"\nNumero "<< novo->num <<" inserido no inicio da lista!\n" ;
 		}
 		
 		if(op == 2){//inserindo no fim da lista
@@ -169,11 +170,14 @@ int main(void){
 			cout<<"\nMenor valor: "<<menorValor(inicio)<<"\n";
 		}
 		
-	}while(op != 7);
+	}while(op != 8);
 }
 
 int menorValor(LISTA *inicio){
-	int menor = inicio->num;	
+	int menor = inicio->num;
+	if (inicio == NULL){
+		return 0;
+	}
 	while(inicio != NULL){
 		if(inicio->num < menor){
 			menor = inicio->num;
@@ -182,7 +186,6 @@ int menorValor(LISTA *inicio){
 	}
 	return menor;
 }
-
 
 
 
