@@ -13,6 +13,7 @@ struct LIST
 void creatList(LIST *head);
 void pushBegin(LIST *head, int n);
 void pushEnd(LIST *head, int n);
+void pull(LIST *head, int n);
 void printL(LIST *head);
 int findSmaller(LIST *head);
 int compare(LIST *headA, LIST *headB);
@@ -31,9 +32,10 @@ int main(void){
         cout<<"\n1 - Inserir no inicio";
         cout<<"\n2 - Inserir no fim";
         cout<<"\n3 - Imprimir";
-        cout<<"\n6 - Menor item da lista";
-        cout<<"\n7 - Comparar duas lista";
-        cout<<"\n8 - Sair\n";
+        cout<<"\n4 - Excluir da lista";
+        cout<<"\n5 - Menor item da lista";
+        cout<<"\n6 - Comparar duas lista";
+        cout<<"\n0 - Sair\n";
         cin>>op;
         switch (op)
         {
@@ -81,13 +83,31 @@ int main(void){
             cout<<"\nLista B: ";
             printL(headB);
             break;
-
-        case 6:
+        case 4:
+            do
+            {
+                cout<<"\nDigite lista a ou b: ";
+                cin>>l;
+            } while (strcmp(l,"a") != 0 && strcmp(l,"b") != 0);
+            if (strcmp(l,"a") == 0)
+            {
+                cout<<"\nDigite um numero para excluir da lista a: ";
+                cin>>num;
+                pull(headA, num);
+            }else if (strcmp(l,"b") == 0)
+            {
+                cout<<"\nDigite um numero para excluir da lisa b: ";
+                cin>>num;
+                pull(headB, num);
+            }
+            break;
+                
+        case 5:
             cout<<"\nLista A: "<<findSmaller(headA);
             cout<<"\nLista B: "<<findSmaller(headB); 
             break;
 
-        case 7:
+        case 6:
             if (compare(headA, headB) == 0)
             {
                 cout<<"\nListas vazias";
@@ -102,11 +122,15 @@ int main(void){
             } 
             break;
 
+        case 0:
+            cout<<"\nSaindo.";
+            break;
+
         default:
             cout<<"\nDigite uma opção válida";
             break;
         }
-    } while (op != 8);
+    } while (op != 0);
 }
 
 void creatList(LIST *head){
@@ -140,6 +164,47 @@ void pushEnd(LIST *head, int n){
             aux = aux->next;
         }
         aux->next = newNode;
+    }
+}
+
+void pull(LIST *head, int n){
+    LIST *aux = new LIST();
+    LIST *back = new LIST();
+
+    if (head == NULL)
+    {
+        cout<<"\nLista vazia";
+    }
+    else
+    {
+        aux = head;
+        while (aux != NULL)
+        {
+            if (aux->num == n){
+                if(aux == head)
+                {
+                    head = aux->next;
+                    delete(aux);
+                    aux = head;
+                }
+                else if (aux->next == NULL)
+                {
+                    back->next = NULL;
+                    delete(aux);
+                    aux = NULL;
+                }else
+                {
+                    back->next = aux->next;
+                    delete(aux);
+                    aux = back->next;
+                }
+                
+            }else
+            {
+                back = aux;
+                aux = aux->next;
+            }
+        }   
     }
 }
 
@@ -204,3 +269,4 @@ int compare(LIST *headA, LIST *headB){
         return 2;
     }
 }
+
