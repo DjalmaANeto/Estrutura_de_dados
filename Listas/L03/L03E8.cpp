@@ -183,6 +183,7 @@ void printL(LIST *head){
 }
 
 void copy(LIST *headA, LIST *headB){
+    creatList(headB);
     LIST *aux = headA->next;
     if(headA == NULL){
         cout<<"\nLista vazia.";
