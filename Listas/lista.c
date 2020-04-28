@@ -64,6 +64,7 @@ void main()
 			break;	
 			
 			case 4:
+				printf("\n %d", TAM);
 				imprimeLISTA(lista);
 			break;
 			

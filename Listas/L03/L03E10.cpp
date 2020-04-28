@@ -17,6 +17,7 @@ void pull(LIST *head, int n);
 void printL(LIST *head);
 void randomInsert(LIST *head, int n, int pos);
 void change(LIST *head, int n, int n1);
+void invert(LIST *head);
 
 int main(void){
     int n, op, n1;
@@ -30,7 +31,8 @@ int main(void){
         cout<<"\n3 - Imprimir";
         cout<<"\n4 - Excluir da lista";
         cout<<"\n5 - Inserir em qualquer posicao";
-        cout<<"\n6 - trocar posicoes";
+        cout<<"\n6 - Trocar posicoes";
+        cout<<"\n7 - Inverter a lista";
         cout<<"\n0 - Sair\n";
         cin>>op;
         switch (op)
@@ -72,6 +74,11 @@ int main(void){
             cout<<" pelo elemento: ";
             cin>>n;
             change(head, n, n1);
+            break;
+        
+        case 7:
+            cout<<"\nInvertendo a lista.";
+            invert(head);
             break;
 
         case 0:
@@ -181,6 +188,7 @@ void printL(LIST *head){
     cout<<"NULL";
 }
 
+
 void randomInsert(LIST *head, int n, int pos){
     if(pos >= 0 && pos <= size)
     {
@@ -233,3 +241,25 @@ void change(LIST *head, int n, int n1){
     }
     aux->num = n;
 }
+
+void invert(LIST *head){
+    LIST *aux = head;
+    while (aux->next != NULL)
+    {
+        
+    }
+    
+}
+
+/*
+void invert(LIST *head){
+    LIST *aux = head;
+    LIST *inverse = new LIST();
+    while (aux != NULL)
+    {
+        pushBegin(inverse, aux->num);
+        aux = aux->next;
+    }
+}
+*/
+
