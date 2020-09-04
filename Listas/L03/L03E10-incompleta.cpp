@@ -244,22 +244,19 @@ void change(LIST *head, int n, int n1){
 
 void invert(LIST *head){
     LIST *aux = head;
-    while (aux->next != NULL)
-    {
-        
-    }
-    
-}
-
-/*
-void invert(LIST *head){
-    LIST *aux = head;
     LIST *inverse = new LIST();
     while (aux != NULL)
     {
         pushBegin(inverse, aux->num);
         aux = aux->next;
     }
+    //testando lista inverse
+    aux = inverse;
+    while (aux != NULL)
+    {
+        cout<<aux->num<<" ";
+        aux = aux->next;
+    }
 }
-*/
+
 
