@@ -4,11 +4,11 @@
 #define n 4
 void main(){
 	int vet[n], aux;
-	//cada elemento da posição i sera comparada com a posição i+1
+	//cada elemento da posiï¿½ï¿½o i sera comparada com a posiï¿½ï¿½o i+1
 	//se o elemento i for maior que i+1, troca-se os elementos
 	int i, N;
 	//carregando o vetor 
-	for(i=0;i<=n;i++){
+	for(i = 0; i <= n-1; i++){
 		printf("Escreva a posicao [%d]: ", i);
 		scanf("%d",&vet[i]);
 	}
@@ -18,13 +18,13 @@ void main(){
 	for(i=0;i<n;i++){
 		printf("%d,",vet[i]);
 	}
-	printf("%d.",vet[n]);
+
 	
 	//ordenando o vetor de forma crescente
-	//laço com a quantidade de elemtos do vetor
-	for(N=1;N<=n;N++){
-		//laço da 1ª a penultima posição 
-		for(i=0;i<n-1;i++){
+	//laï¿½o com a quantidade de elemtos do vetor
+	for(N = 1; N <= n; N++){
+		//laï¿½o da 1ï¿½ a penultima posiï¿½ï¿½o 
+		for(i = 0; i <= n-2; i++){
 			if(vet[i] > vet[i+1]){
 				aux = vet[i];
 				vet[i] = vet[i+1];
@@ -38,5 +38,5 @@ void main(){
 	for(i=0;i<n;i++){
 		printf("%i,",vet[i]);
 	}
-	printf("%i.",vet[n]);
+
 }

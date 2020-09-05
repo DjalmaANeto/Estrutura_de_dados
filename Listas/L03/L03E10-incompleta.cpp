@@ -79,6 +79,7 @@ int main(void){
         case 7:
             cout<<"\nInvertendo a lista.";
             invert(head);
+            printL(head);
             break;
 
         case 0:
@@ -251,12 +252,14 @@ void invert(LIST *head){
         aux = aux->next;
     }
     //testando lista inverse
-    aux = inverse;
-    while (aux != NULL)
-    {
-        cout<<aux->num<<" ";
-        aux = aux->next;
-    }
+    // aux = inverse;
+    // while (aux != NULL)
+    // {
+    //     cout<<aux->num<<" ";
+    //     aux = aux->next;
+    // }
+    delete(head);
+    head->next = inverse;
 }
 
 
