@@ -7,7 +7,7 @@ void main()
 	int vet[n], aux, i, N, troca;
 	
 	//carregando o vetor 
-	for(i=0;i<=n;i++){
+	for(i=0;i<n;i++){
 		printf("Escreva a posicao [%d]: ", i);
 		scanf("%d",&vet[i]);
 	}
@@ -17,16 +17,16 @@ void main()
 	for(i=0;i<n;i++){
 		printf("%i,",vet[i]);
 	}
-	printf("%i.",vet[n]);
+	
 	
 	//ordenando de forma decrescente
-	//laço com a quantidade de elementos do vetor
+	//laï¿½o com a quantidade de elementos do vetor
 	//e enqunato houver troca
 	N = 1;
 	troca = 1;
-	while(N<=5 && troca == 1){
+	while(N<=n && troca == 1){
 		troca = 0;
-		for(i=0;i<=n;i++){
+		for(i=0;i<=n-2;i++){
 			if(vet[i]<vet[i+1]){
 				troca = 1;
 				aux = vet[i];
@@ -42,5 +42,5 @@ void main()
 	for(i=0;i<n;i++){
 		printf("%i,",vet[i]);
 	}
-	printf("%i.",vet[n]); 
+	 
 }

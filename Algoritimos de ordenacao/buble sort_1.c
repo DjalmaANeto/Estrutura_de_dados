@@ -17,8 +17,8 @@ void main(){
 	}
 	printf("%i.",vet[n]);
 	
-	//cada elemento i sera comparado com a posição i-1
-	//quando a ordenação desejada(crescente) é encontrada a troca é feita 
+	//cada elemento i sera comparado com a posiï¿½ï¿½o i-1
+	//quando a ordenaï¿½ï¿½o desejada(crescente) ï¿½ encontrada a troca ï¿½ feita 
 	//quantidade de elementos - 1
 	for(j=1; j<=n-1; j++){
 		for(i=n-1; i>=j; i--){
