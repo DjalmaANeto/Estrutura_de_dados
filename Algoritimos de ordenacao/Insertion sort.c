@@ -7,7 +7,7 @@ void main(){
 	int i, j, eleito;
 	
 	//preenchendo o vetor
-	for(i=0;i<=n;i++){
+	for(i=0;i<=n-1;i++){
 		printf("Insira vet[%d]: ",i);
 		scanf("%d",&vet[i]);
 	} 
@@ -17,16 +17,16 @@ void main(){
 	for(i=0;i<n;i++){
 		printf("%d, ",vet[i]);
 	} 
-	printf("%d.",vet[n]);
+	
 	
 	//ordenando de forma crescente 
-	//laço com a quantidade de elementos -1
-	for(i=1;i<=n;i++){
+	//laï¿½o com a quantidade de elementos -1
+	for(i=0;i<=n-2;i++){
 		eleito = vet[i];
 		j = i - 1;
-		//laço percorre os elementos a esquerda de eleito
-		//ou até encontrar a posição para recolocação do
-		//numero eleito respeitando a ordenação procurada
+		//laï¿½o percorre os elementos a esquerda de eleito
+		//ou atï¿½ encontrar a posiï¿½ï¿½o para recolocaï¿½ï¿½o do
+		//numero eleito respeitando a ordenaï¿½ï¿½o procurada
 		while(j >= 0 && vet[j] > eleito){
 			vet[j+1] = vet[j];
 			j = j - 1;
@@ -35,10 +35,10 @@ void main(){
 	}
 	
 	//imprimindo forma ordenada
-	printf("\nForma atual: ");
+	printf("\nForma ordenada: ");
 	for(i=0;i<n;i++){
 		printf("%d, ",vet[i]);
 	} 
-	printf("%d.",vet[n]);
+	
 	
 } 

@@ -12,7 +12,7 @@ void main()
 	int vet[10];
 	int i;
 	
-	//carregando números no vetor
+	//carregando nï¿½meros no vetor
 	for(i = 0; i <= 9; i++){
 		printf("Escreva vet[%i]: ", i);
 		scanf("%i",&vet[i]);
@@ -54,8 +54,7 @@ int particao(int vet[], int p, int r)
 		}while(vet[j] > pivo);
 		do{
 			i = i + 1;
-		}
-		while(vet[i]<pivo);
+		}while(vet[i]<pivo);
 		if(i < j) troca(vet, i, j);
 	}
 	return j;
