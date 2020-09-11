@@ -19,10 +19,10 @@ int main(void){
 	//ponteiro auxiliar
 	LISTA *aux;
 	
-	//ponteiro da posção anterior 
+	//ponteiro da posï¿½ï¿½o anterior 
 	LISTA *anterior;
 	
-	//apresentando o menu de opções
+	//apresentando o menu de opï¿½ï¿½es
 	int op, numero, achou, elemento, quantidade;
 	do{
 		cout<<"\n\nMenu:\n";
@@ -39,12 +39,12 @@ int main(void){
 		}
 		
 		if(op == 1){
-			cout<<"Digite o número a ser inserido no inicio: ";
+			cout<<"Digite o nï¿½mero a ser inserido no inicio: ";
 			LISTA *novo = new LISTA();
 			cin>>novo->num;
 			
 			if(inicio == NULL){
-				//lista vazia o elemento será inserido no iníncio
+				//lista vazia o elemento serï¿½ inserido no inï¿½ncio
 				inicio = novo;
 				fim = novo;
 				fim->prox = inicio;
@@ -79,7 +79,7 @@ int main(void){
 		//imprimindo toda a lista do inicio ao fim
 		if(op == 3){
 			if(inicio == NULL){
-				//a lista está vazia 
+				//a lista estï¿½ vazia 
 				cout<<"\nLista vazia.";
 			}else{
 				//lista contem itens para a impressao
@@ -124,19 +124,19 @@ int main(void){
 							//numero digitado encontrado na lista
 							achou++;
 							if(aux == inicio){
-								//O número a ser removido é o primeiro da lista
+								//O nï¿½mero a ser removido ï¿½ o primeiro da lista
 								inicio = aux->prox;
 								fim->prox = inicio;
 								delete(aux);
 								aux = inicio;
 							}else if(aux == fim){
-								//o numero foi encontrado na última posição
+								//o numero foi encontrado na ï¿½ltima posiï¿½ï¿½o
 								fim = anterior;
 								fim->prox = inicio;
 								delete(aux);
 								aux = NULL;
 							}else{
-								//o número a ser removido está no meio da lista
+								//o nï¿½mero a ser removido estï¿½ no meio da lista
 								anterior->prox = aux->prox;
 								delete(aux);
 								aux = anterior->prox;
@@ -147,7 +147,7 @@ int main(void){
 						}
 					}
 					elemento++;
-				}while(elemento <= quantidade);//cuasuando erro	
+				}while(elemento <= quantidade);
 				
 				if(achou == 0){
 				cout<<"\nNumero nao encontrado";

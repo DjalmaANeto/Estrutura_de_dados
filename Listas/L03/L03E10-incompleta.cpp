@@ -18,6 +18,7 @@ void printL(LIST *head);
 void randomInsert(LIST *head, int n, int pos);
 void change(LIST *head, int n, int n1);
 void invert(LIST *head);
+void *popALL(LIST *head);
 
 int main(void){
     int n, op, n1;
@@ -33,6 +34,7 @@ int main(void){
         cout<<"\n5 - Inserir em qualquer posicao";
         cout<<"\n6 - Trocar posicoes";
         cout<<"\n7 - Inverter a lista";
+        cout<<"\n8 - Apaga a lista";
         cout<<"\n0 - Sair\n";
         cin>>op;
         switch (op)
@@ -79,7 +81,12 @@ int main(void){
         case 7:
             cout<<"\nInvertendo a lista.";
             invert(head);
+            cout<<"\nLista A: ";
             printL(head);
+            break;
+        
+        case 8:
+            popALL(head);
             break;
 
         case 0:
@@ -251,15 +258,25 @@ void invert(LIST *head){
         pushBegin(inverse, aux->num);
         aux = aux->next;
     }
-    //testando lista inverse
-    // aux = inverse;
-    // while (aux != NULL)
-    // {
-    //     cout<<aux->num<<" ";
-    //     aux = aux->next;
-    // }
-    delete(head);
-    head->next = inverse;
+    // delete(head);
+    head->next = inverse->next;
 }
 
+void *popALL(LIST *head){
+    if (head == NULL)
+    {
+        cout<<"\nLista vazia!";
+    }
+    else
+    {
+        LIST *aux = head;
+        while (aux != NULL)
+        {
+            head = head->next;
+            delete(aux);
+            aux = head;
+        }
+        cout<<"\nLista esvaziada";
+    }
+}
 

@@ -35,7 +35,7 @@ int main()
         if (op == 1)
         {
             cout<<"\nDigite o número a ser inserido na pilha: ";
-            PILHA *novo = new PILHA;
+            PILHA *novo = new PILHA();
             cin>>novo->num;
             novo->prox = topo;
             topo = novo;
@@ -98,7 +98,7 @@ int main()
                 cout<<"Pilha esvaziada!!\n";
             }
         }
-        getch();
+        
     } while (op != 5);
      
 }

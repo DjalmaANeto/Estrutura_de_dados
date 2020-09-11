@@ -102,7 +102,6 @@ int main(){
                 cout<<"Fila esvaziada";
             }
         }
-        getch();
     } while (op != 5);
     
-}
+}upa

@@ -17,6 +17,7 @@ void imprimeLISTA(node *LISTA);
 node *popINICIO(node *LISTA);
 node *popFIM(node *LISTA);
 node *popALEATORIO(node *LISTA, int TAM, int posi);
+node *popALL(node *LISTA);
 
 void main()
 {
@@ -267,4 +268,23 @@ node *popALEATORIO(node *LISTA, int TAM, int posi)
 			return anterior;
 		}
 	}
+}
+
+node *popALL(node *LISTA)
+{
+	node *temp;
+	temp = LISTA->next;
+	if(temp==NULL)
+	{
+		printf("\nPilha vazia.\n");
+		return NULL;
+	}
+	else
+	{
+		while (temp != NULL)
+		{
+			LISTA->next = temp->next;
+			free(temp);
+		}
+	}	
 }
