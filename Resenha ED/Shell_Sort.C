@@ -11,6 +11,7 @@ int main(void)
 {
     int *item;
     int trocas = 0;
+    clock_t tempo = 0;
     //incrementanod array
     item = (int *)malloc(n * (sizeof(int)));
     int i;
@@ -27,16 +28,20 @@ int main(void)
     // }
 
     //ordenando elementos
+    tempo = clock();
     shellSort(item, n, &trocas);
-    printf("\n");
+    tempo = clock() - tempo;
+    // printf("\n");
     // printf("\nForma ordenada: ");
     // for (i = 0; i < n; i++)
     // {
     //     printf("%i, ", item[i]);
     // }
     free(item);
-    printf("\n\nTrocas: %i", trocas);
+    printf("\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 
     //teste com 1000 elementos
     item = (int *) malloc((n*10) * (sizeof(int)));
@@ -52,8 +57,10 @@ int main(void)
     // }
 
     //ordenando elementos
+    tempo = clock();
     shellSort(item, (n*10), &trocas);
-    printf("\n");
+    tempo = clock() - tempo;
+    // printf("\n");
     // printf("\nForma ordenada: ");
     // for ( i = 0; i < (n*10); i++)
     // {
@@ -61,7 +68,9 @@ int main(void)
     // }
     free(item);
     printf("\n\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 
     //teste com 1000 elementos
     item = (int *) malloc((n*100) * (sizeof(int)));
@@ -77,8 +86,10 @@ int main(void)
     // }
 
     //ordenando elementos
+    tempo = clock();
     shellSort(item, (n*100), &trocas);
-    printf("\n");
+    tempo = clock() - tempo;
+    // printf("\n");
     // printf("\nForma ordenada: ");
     // for ( i = 0; i < (n*100); i++)
     // {
@@ -86,7 +97,9 @@ int main(void)
     // }
     free(item);
     printf("\n\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 }
 
 void shellSort(int *item, int count, int *trocas)

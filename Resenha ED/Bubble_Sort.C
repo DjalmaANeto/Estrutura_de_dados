@@ -11,6 +11,7 @@ int main(void)
 {
     int *item;
     int trocas = 0;
+    clock_t tempo;
     //incrementanod array
     item = (int *) malloc(n * (sizeof(int)));
     int i;
@@ -27,7 +28,9 @@ int main(void)
     // }
 
     //ordenando elementos 
+    tempo = clock();
     bubble(item, n, &trocas);
+    tempo = clock() - tempo;
     printf("\n");
     // printf("\nForma ordenada: ");
     // for ( i = 0; i < n; i++)
@@ -35,8 +38,10 @@ int main(void)
     //     printf("%i, ",item[i]); 
     // }
     free(item);
-    printf("\n\nTrocas: %i", trocas);
+    printf("\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 
     //teste com 1000 elementos
     item = (int *) malloc((n*10) * (sizeof(int)));
@@ -51,8 +56,10 @@ int main(void)
     //     printf("%i, ",item[i]); 
     // }
 
-    //ordenando elementos 
+    //ordenando elementos
+    tempo = clock(); 
     bubble(item, (n*10), &trocas);
+    tempo = clock() - tempo; 
     printf("\n");
     // printf("\nForma ordenada: ");
     // for ( i = 0; i < (n*10); i++)
@@ -60,8 +67,10 @@ int main(void)
     //     printf("%i, ",item[i]); 
     // }
     free(item);
-    printf("\n\nTrocas: %i", trocas);
+    printf("\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 
     //teste com 10000 elementos
     item = (int *) malloc((n*100) * (sizeof(int)));
@@ -76,8 +85,10 @@ int main(void)
     //     printf("%i, ",item[i]); 
     // }
 
-    //ordenando elementos 
+    //ordenando elementos
+    tempo = clock(); 
     bubble(item, (n*100), &trocas);
+    tempo = clock() - tempo;
     printf("\n");
     // printf("\nForma ordenada: ");
     // for ( i = 0; i < (n*100); i++)
@@ -85,7 +96,8 @@ int main(void)
     //     printf("%i, ",item[i]); 
     // }
     free(item);
-    printf("\n\nTrocas: %i", trocas);
+    printf("\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     
 }
 

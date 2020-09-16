@@ -15,7 +15,7 @@ int main(void)
     //incrementanod array
     int i;
     int trocas = 0;
-
+    time_t tempo = 0;
     srand(time(NULL));
     for (i = 0; i < count; i++)
     {
@@ -29,8 +29,10 @@ int main(void)
     // }
 
     //ordenando elementos
+    tempo = clock();
     mergeSort(item, count, &trocas);
-    printf("\n");
+    tempo = clock() - tempo;
+    //  printf("\n");
     // printf("\nForma ordenada: ");
     // for (i = 0; i < count; i++)
     // {
@@ -38,7 +40,9 @@ int main(void)
     // }
     free(item);
     printf("\n\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 
     //teste com 1000 elementos
     for (i = 0; i < (count * 10); i++)
@@ -53,8 +57,10 @@ int main(void)
     //  }
 
     //ordenando elementos
+    tempo = clock();
     mergeSort(item, (count * 10), &trocas);
-    printf("\n");
+    tempo = clock() - tempo;
+    //  printf("\n");
     //  printf("\nForma ordenada: ");
     //  for ( i = 0; i < (count*10); i++)
     //  {
@@ -62,7 +68,9 @@ int main(void)
     //  }
     free(item);
     printf("\n\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 
     //teste com 10000 elementos
     for (i = 0; i < (count * 100); i++)
@@ -77,8 +85,10 @@ int main(void)
     //  }
 
     //ordenando elementos
+    tempo = clock();
     mergeSort(item, (count * 100), &trocas);
-    printf("\n");
+    tempo = clock() - tempo;
+    //  printf("\n");
     //  printf("\nForma ordenada: ");
     //  for ( i = 0; i < (count*100); i++)
     //  {
@@ -86,7 +96,9 @@ int main(void)
     //  }
     free(item);
     printf("\n\nTrocas: %i", trocas);
+    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
+    tempo = 0;
 }
 
 void merge(int v[], int n, int *trocas)
