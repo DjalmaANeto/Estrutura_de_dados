@@ -5,11 +5,12 @@
 
 #define n 100
 
-void select(int *item, int count);
+void select(int *item, int count, int *trocas);
 
 int main (void)
 {
     int *item;
+    int trocas = 0;
     //incrementanod array
     item = (int *) malloc(n * (sizeof(int)));
     int i;
@@ -19,14 +20,14 @@ int main (void)
         item[i] = rand()%100;
     }
     printf("\n-Teste com 100 elementos");
-    printf("\nForma desordenada: ");
-    for ( i = 0; i < n; i++)
-    {
-        printf("%i, ",item[i]); 
-    }
+    // printf("\nForma desordenada: ");
+    // for ( i = 0; i < n; i++)
+    // {
+    //     printf("%i, ",item[i]); 
+    // }
 
     //ordenando elementos 
-    select(item, n);
+    select(item, n, &trocas);
     printf("\n");
     printf("\nForma ordenada: ");
     for ( i = 0; i < n; i++)
@@ -34,6 +35,8 @@ int main (void)
         printf("%i, ",item[i]); 
     }
     free(item);
+    printf("\n\nTrocas: %i", trocas);
+    trocas = 0;
 
     //teste com 1000 elementos
     item = (int *) malloc((n*10) * (sizeof(int)));
@@ -42,21 +45,23 @@ int main (void)
         item[i] = rand()%1000;
     }
     printf("\n\n-Teste com 1000 elementos");
-    printf("\nForma desordenada: ");
-    for ( i = 0; i < (n*10); i++)
-    {
-        printf("%i, ",item[i]); 
-    }
+    // printf("\nForma desordenada: ");
+    // for ( i = 0; i < (n*10); i++)
+    // {
+    //     printf("%i, ",item[i]); 
+    // }
 
     //ordenando elementos 
-    select(item, (n*10));
+    select(item, (n*10), &trocas);
     printf("\n");
-    printf("\nForma ordenada: ");
-    for ( i = 0; i < (n*10); i++)
-    {
-        printf("%i, ",item[i]); 
-    }
+    // printf("\nForma ordenada: ");
+    // for ( i = 0; i < (n*10); i++)
+    // {
+    //     printf("%i, ",item[i]); 
+    // }
     free(item);
+    printf("\n\nTrocas: %i", trocas);
+    trocas = 0;
     
     //teste com 10000 elementos
     item = (int *) malloc((n*100) * (sizeof(int)));
@@ -65,24 +70,26 @@ int main (void)
         item[i] = rand()%10000;
     }
     printf("\n\n-Teste com 10000 elementos");
-    printf("\nForma desordenada: ");
-    for ( i = 0; i < (n*100); i++)
-    {
-        printf("%i, ",item[i]); 
-    }
+    // printf("\nForma desordenada: ");
+    // for ( i = 0; i < (n*100); i++)
+    // {
+    //     printf("%i, ",item[i]); 
+    // }
 
     //ordenando elementos 
-    select(item, (n*100));
+    select(item, (n*100), &trocas);
     printf("\n");
-    printf("\nForma ordenada: ");
-    for ( i = 0; i < (n*100); i++)
-    {
-        printf("%i, ",item[i]); 
-    }
+    // printf("\nForma ordenada: ");
+    // for ( i = 0; i < (n*100); i++)
+    // {
+    //     printf("%i, ",item[i]); 
+    // }
     free(item);
+    printf("\n\nTrocas: %i", trocas);
+    trocas = 0;
 }
 
-void select(int *item, int count)
+void select(int *item, int count, int *trocas)
 {
     register int a, b, c;
     int exchange, t;
@@ -104,6 +111,7 @@ void select(int *item, int count)
         {
             item[c] = item[a];
             item[a] = t;
+            *trocas = *trocas + 1;
         }
     }
 }

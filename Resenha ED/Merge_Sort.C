@@ -5,8 +5,8 @@
 
 #define count 100
 
-void merge(int item[], int n);
-void mergeSort(int v[], int n);
+void merge(int item[], int n, int *trocas);
+void mergeSort(int v[], int n, int *trocas);
 
 int main(void)
 {
@@ -14,74 +14,82 @@ int main(void)
 
     //incrementanod array
     int i;
+    int trocas = 0;
+
     srand(time(NULL));
     for (i = 0; i < count; i++)
     {
         item[i] = rand() % 100;
     }
     printf("\n-Teste com 100 elementos");
-    printf("\nForma desordenada: ");
-    for (i = 0; i < count; i++)
-    {
-        printf("%i, ", item[i]);
-    }
+    // printf("\nForma desordenada: ");
+    // for (i = 0; i < count; i++)
+    // {
+    //     printf("%i, ", item[i]);
+    // }
 
     //ordenando elementos
-    mergeSort(item, count);
+    mergeSort(item, count, &trocas);
     printf("\n");
-    printf("\nForma ordenada: ");
-    for (i = 0; i < count; i++)
-    {
-        printf("%i, ", item[i]);
-    }
+    // printf("\nForma ordenada: ");
+    // for (i = 0; i < count; i++)
+    // {
+    //     printf("%i, ", item[i]);
+    // }
     free(item);
+    printf("\n\nTrocas: %i", trocas);
+    trocas = 0;
 
     //teste com 1000 elementos
-     for ( i = 0; i < (count*10); i++)
-     {
-         item[i] = rand()%1000;
-     }
-     printf("\n\n-Teste com 1000 elementos");
-     printf("\nForma desordenada: ");
-     for ( i = 0; i < (count*10); i++)
-     {
-         printf("%i, ",item[i]);
-     }
+    for (i = 0; i < (count * 10); i++)
+    {
+        item[i] = rand() % 1000;
+    }
+    printf("\n\n-Teste com 1000 elementos");
+    printf("\nForma desordenada: ");
+    //  for ( i = 0; i < (count*10); i++)
+    //  {
+    //      printf("%i, ",item[i]);
+    //  }
 
-     //ordenando elementos
-     mergeSort(item, (count*10));
-     printf("\n");
-     printf("\nForma ordenada: ");
-     for ( i = 0; i < (count*10); i++)
-     {
-         printf("%i, ",item[i]);
-     }
-     free(item);
+    //ordenando elementos
+    mergeSort(item, (count * 10), &trocas);
+    printf("\n");
+    //  printf("\nForma ordenada: ");
+    //  for ( i = 0; i < (count*10); i++)
+    //  {
+    //      printf("%i, ",item[i]);
+    //  }
+    free(item);
+    printf("\n\nTrocas: %i", trocas);
+    trocas = 0;
 
-     //teste com 10000 elementos
-     for ( i = 0; i < (count*100); i++)
-     {
-         item[i] = rand()%10000;
-     }
-     printf("\n\n-Teste com 10000 elementos");
-     printf("\nForma desordenada: ");
-     for ( i = 0; i < (count*100); i++)
-     {
-         printf("%i, ",item[i]);
-     }
+    //teste com 10000 elementos
+    for (i = 0; i < (count * 100); i++)
+    {
+        item[i] = rand() % 10000;
+    }
+    printf("\n\n-Teste com 10000 elementos");
+    //  printf("\nForma desordenada: ");
+    //  for ( i = 0; i < (count*100); i++)
+    //  {
+    //      printf("%i, ",item[i]);
+    //  }
 
-     //ordenando elementos
-     mergeSort(item, (count*100));
-     printf("\n");
-     printf("\nForma ordenada: ");
-     for ( i = 0; i < (count*100); i++)
-     {
-         printf("%i, ",item[i]);
-     }
-     free(item);
+    //ordenando elementos
+    mergeSort(item, (count * 100), &trocas);
+    printf("\n");
+    //  printf("\nForma ordenada: ");
+    //  for ( i = 0; i < (count*100); i++)
+    //  {
+    //      printf("%i, ",item[i]);
+    //  }
+    free(item);
+    printf("\n\nTrocas: %i", trocas);
+    trocas = 0;
 }
 
-void merge(int v[], int n)
+void merge(int v[], int n, int *trocas)
 {
     int meio, i, j, k;
     int *auxiliar;
@@ -99,10 +107,12 @@ void merge(int v[], int n)
         if (v[i] <= v[j])
         {
             auxiliar[k] = v[i++];
+            *trocas = *trocas + 1;
         }
         else
         {
             auxiliar[k] = v[j++];
+            *trocas = *trocas + 1;
         }
         ++k;
     }
@@ -111,6 +121,7 @@ void merge(int v[], int n)
         while (j < n)
         {
             auxiliar[k++] = v[j++];
+            *trocas = *trocas + 1;
         }
     }
     else
@@ -118,6 +129,7 @@ void merge(int v[], int n)
         while (i < meio)
         {
             auxiliar[k++] = v[i++];
+            *trocas = *trocas + 1;
         }
     }
     for (i = 0; i < n; ++i)
@@ -127,14 +139,14 @@ void merge(int v[], int n)
     free(auxiliar);
 }
 
-void mergeSort(int v[], int n)
+void mergeSort(int v[], int n, int *trocas)
 {
     int meio;
     if (n > 1)
     {
         meio = n / 2;
-        mergeSort(v, meio);
-        mergeSort(v + meio, n - meio);
-        merge(v, n);
+        mergeSort(v, meio, trocas);
+        mergeSort(v + meio, n - meio, trocas);
+        merge(v, n, trocas);
     }
 }
