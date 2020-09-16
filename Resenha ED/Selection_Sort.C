@@ -39,7 +39,7 @@ int main (void)
     // }
     free(item);
     printf("\n\nTrocas: %i", trocas);
-    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
+    printf("\nTempo: %0.7lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
     tempo = 0;
 
@@ -68,7 +68,7 @@ int main (void)
     // }
     free(item);
     printf("\n\nTrocas: %i", trocas);
-    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
+    printf("\nTempo: %0.7lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
     tempo = 0;
     
@@ -97,7 +97,7 @@ int main (void)
     // }
     free(item);
     printf("\n\nTrocas: %i", trocas);
-    printf("\nTempo: %lf", ((double)tempo/(CLOCKS_PER_SEC)));
+    printf("\nTempo: %0.7lf", ((double)tempo/(CLOCKS_PER_SEC)));
     trocas = 0;
     tempo = 0;
 }
@@ -118,6 +118,7 @@ void select(int *item, int count, int *trocas)
                 c = b;
                 t = item[b];
                 exchange = 1;
+                *trocas = *trocas + 1;
             }
         }
         if (exchange)
